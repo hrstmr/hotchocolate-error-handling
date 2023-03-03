@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
+    .AddMutationType<Mutation>()
     .AddTypeExtension<BookExtensions>()
     .AddType<Rating>()
     .AddType<BookUnpublishedError>();
