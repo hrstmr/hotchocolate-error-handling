@@ -33,7 +33,7 @@ public class Mutation
     [Error<OutOfStockException>]
     public async Task<Book> BuyBookOrMultiError(string title)
     {
-        List<Exception> exceptions = new List<Exception>();
+        var exceptions = new List<Exception>();
         if (title == "err")
         {
             var outOfStock = new OutOfStockException()
