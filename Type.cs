@@ -15,25 +15,19 @@ public class Author
 [ExtendObjectType(typeof(Book))]
 public class BookExtensions
 {
-    public BookRating GetRatings([Parent] Book book)
+    // With Union
+    public BookRating GetRatingAsUnion([Parent] Book book)
     {
         return book.ReleaseDate < DateTimeOffset.Now
             ? new Rating() { Average = 5 }
             : new BookUnpublishedError() { ReleaseDate = book.ReleaseDate };
     }
-}
 
-[UnionType]
-public interface BookRating { }
-
-public class Rating : BookRating
-{
-    public required int Average { get; set; }
-    public int Total { get; set; } = 0;
-}
-
-public class BookUnpublishedError : BookRating
-{
-    public string Message { get; set; } = "Book is not published yet";
-    public required DateTimeOffset ReleaseDate { get; set; }
+    // As an Error
+    public Rating? GetRatingWithError([Parent] Book book)
+    {
+        return book.ReleaseDate < DateTimeOffset.Now
+            ? new Rating() { Average = 5 }
+            : throw new Exception();
+    }
 }
