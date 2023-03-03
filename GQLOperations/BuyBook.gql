@@ -1,0 +1,26 @@
+mutation NoError {
+  buyBook(
+    title: "First Book"
+  ) {
+    title
+    author {
+      name
+    }
+    ratingAsUnion {
+      __typename
+    }
+  }
+}
+mutation WithError {
+  buyBook(
+    title: "err"
+  ) {
+    title
+    author {
+      name
+    }
+    ratingAsUnion {
+      __typename
+    }
+  }
+}
