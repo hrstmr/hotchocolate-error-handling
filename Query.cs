@@ -2,10 +2,18 @@
 
 public class Query
 {
-    public Book GetBook() =>
+    public List<Book> GetBook() =>
         new()
         {
-            Title = "C# in depth.",
-            Author = new Author { Name = "Jon Skeet" }
+            new()
+            {
+                Title = "C# in depth",
+                Author = new Author { Name = "Jon Skeet" }
+            },
+            new()
+            {
+                Title = "C# in depth",
+                Author = new Author { Name = "Jon Skeet" }
+            }
         };
 }
