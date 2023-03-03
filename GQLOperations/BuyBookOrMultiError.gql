@@ -1,0 +1,31 @@
+mutation {
+  buyBookOrMultiError(
+    input: {
+      title : "err"
+    }
+  ) {
+    book {
+      title
+      releaseDate
+    }
+    errors{
+      __typename
+      ... on InSufficientFundError{
+        currentBalance
+        requiredAmount
+       message 
+      }
+      ...on OutOfStockError{
+        backInStockDate
+        suggestedBook {
+          title
+          releaseDate
+          
+        }
+      }
+      ... on Error{
+        message
+      }
+    }
+  }
+}
