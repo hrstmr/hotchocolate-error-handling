@@ -1,6 +1,4 @@
-﻿using hotchocolate_error_handling.Types;
-
-namespace hotchocolate_error_handling;
+﻿namespace hotchocolate_error_handling;
 
 public class Query
 {
