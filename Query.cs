@@ -7,13 +7,15 @@ public class Query
         {
             new()
             {
-                Title = "C# in depth",
-                Author = new Author { Name = "Jon Skeet" }
+                Title = "A Tale of Two Loops",
+                Author = new Author { Name = "Jon Skeet" },
+                ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
             },
             new()
             {
-                Title = "C# in depth",
-                Author = new Author { Name = "Jon Skeet" }
+                Title = "The Great Recursive Adventure",
+                Author = new Author { Name = "Jon Skeet" },
+                ReleaseDate = DateTimeOffset.UtcNow.AddYears(1),
             }
         };
 }
