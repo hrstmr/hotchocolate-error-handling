@@ -6,6 +6,7 @@ builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
+    .AddMutationConventions(applyToAllMutations: false)
     .AddTypeExtension<BookExtensions>()
     .AddType<Rating>()
     .AddType<BookUnpublishedError>();
