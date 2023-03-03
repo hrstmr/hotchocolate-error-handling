@@ -14,23 +14,23 @@ public class Author
 [ExtendObjectType(typeof(Book))]
 public class BookExtensions
 {
-    public IEnumerable<string> GetReviews([Parent] Book book)
+    public IEnumerable<string> GetRatings([Parent] Book book)
     {
         return new List<string>() { "Nice", "Not Good", "Great" };
     }
 }
 
 [UnionType]
-public interface IBookReview { }
+public interface IBookRating { }
 
-public class TextContent : IBookReview
+public class Rating : IBookRating
 {
-    public string Text { get; set; }
+    public required int Average { get; set; }
+    public int Total { get; set; } = 0;
 }
 
-public class ImageContent : IBookReview
+public class BookUnpublishedError : IBookRating
 {
-    public string ImageUrl { get; set; }
-
-    public int Height { get; set; }
+    public string Message { get; set; } = "Book is not published yet";
+    public required DateTimeOffset ReleaseDate { get; set; }
 }
