@@ -5,7 +5,7 @@ namespace hotchocolate_error_handling;
 public class Query
 {
     public Book GetBook() =>
-        new Book
+        new()
         {
             Title = "C# in depth.",
             Author = new Author { Name = "Jon Skeet" }
