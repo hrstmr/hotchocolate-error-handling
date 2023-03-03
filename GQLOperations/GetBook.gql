@@ -1,0 +1,25 @@
+{
+  book {
+    title
+    releaseDate
+
+    author {
+      name
+    }
+
+    ratingAsUnion {
+      __typename
+      ... on Rating {
+        average
+      }
+      ... on BookUnpublishedError {
+        message
+        releaseDate
+      }
+    }
+    
+    ratingWithError {
+      average
+    }
+  }
+}
