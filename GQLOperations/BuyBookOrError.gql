@@ -1,0 +1,23 @@
+mutation {
+  buyBookOrError(
+    input: {
+      title : "err"
+    }
+  ) {
+    book {
+      title
+      releaseDate
+    }
+    errors{
+      __typename
+      ... on InSufficientFundError{
+        currentBalance
+        requiredAmount
+       message 
+      }
+      ... on Error{
+        message
+      }
+    }
+  }
+}
