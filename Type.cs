@@ -4,6 +4,7 @@ public class Book
 {
     public required string Title { get; set; }
     public required Author Author { get; set; }
+    public required DateTimeOffset ReleaseDate { get; set; }
 }
 
 public class Author
@@ -14,9 +15,11 @@ public class Author
 [ExtendObjectType(typeof(Book))]
 public class BookExtensions
 {
-    public IEnumerable<string> GetRatings([Parent] Book book)
+    public IBookRating GetRatings([Parent] Book book)
     {
-        return new List<string>() { "Nice", "Not Good", "Great" };
+        return book.ReleaseDate < DateTimeOffset.Now
+            ? new Rating() { Average = 5 }
+            : new BookUnpublishedError() { ReleaseDate = book.ReleaseDate };
     }
 }
 
