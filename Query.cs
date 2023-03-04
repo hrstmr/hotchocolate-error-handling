@@ -13,7 +13,7 @@ public class Query
             new(
                 "The Great Recursive Adventure",
                 new Author("Jon Skeet Homer"),
-                DateTimeOffset.UtcNow.AddYears(-1)
+                DateTimeOffset.UtcNow.AddYears(1)
             ),
         };
 }
