@@ -7,12 +7,7 @@ public class Mutation
         if (title == "err")
             throw new InSufficientFundException(10, 50);
 
-        return new()
-        {
-            Title = title,
-            Author = new Author("Jon Skeet"),
-            ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
-        };
+        return new Book(title, new("Jon Skeet"), DateTimeOffset.UtcNow);
     }
 
     [Error<InSufficientFundException>]
@@ -21,12 +16,7 @@ public class Mutation
         if (title == "err")
             throw new InSufficientFundException(10, 50);
 
-        return new()
-        {
-            Title = title,
-            Author = new Author("Jon Skeet"),
-            ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
-        };
+        return new Book(title, new("Jon Skeet"), DateTimeOffset.UtcNow);
     }
 
     [Error<InSufficientFundException>]
@@ -38,28 +28,17 @@ public class Mutation
         {
             var outOfStock = new OutOfStockException()
             {
-                SuggestedBook = new()
-                {
-                    Author = new() { Name = "John Doe" },
-                    ReleaseDate = DateTimeOffset.UtcNow,
-                    Title = "Suggested Book"
-                },
+                SuggestedBook = new("Suggested Book", new("John Doe"), DateTimeOffset.UtcNow),
                 BackInStockDate = DateTimeOffset.UtcNow.AddDays(5),
             };
             exceptions.Add(outOfStock);
             exceptions.Add(new InSufficientFundException(10, 50));
         }
-        if (exceptions.Count > 0)
-        {
-            throw new AggregateException(exceptions);
-        }
 
-        return new()
-        {
-            Title = title,
-            Author = new Author("Jon Skeet"),
-            ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
-        };
+        if (exceptions.Count > 0)
+            throw new AggregateException(exceptions);
+
+        return new Book(title, new("Jon Skeet"), DateTimeOffset.UtcNow);
     }
 }
 
