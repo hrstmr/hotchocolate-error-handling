@@ -10,7 +10,7 @@ public class Mutation
         return new()
         {
             Title = title,
-            Author = new Author { Name = "Jon Skeet" },
+            Author = new Author("Jon Skeet"),
             ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
         };
     }
@@ -24,7 +24,7 @@ public class Mutation
         return new()
         {
             Title = title,
-            Author = new Author { Name = "Jon Skeet" },
+            Author = new Author("Jon Skeet"),
             ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
         };
     }
@@ -57,7 +57,7 @@ public class Mutation
         return new()
         {
             Title = title,
-            Author = new Author { Name = "Jon Skeet" },
+            Author = new Author("Jon Skeet"),
             ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
         };
     }
