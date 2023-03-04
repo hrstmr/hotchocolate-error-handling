@@ -11,16 +11,20 @@ public class BookExtensions
     // Define a resolver method for a field that returns a BookRating Union
     public BookRating GetRatingAsUnion([Parent] Book book)
     {
+        if (book.Title == "Rise of the Sugar Rush")
+            return new PendingValidationError();
+
         return book.ReleaseDate < DateTimeOffset.UtcNow
-            ? new Rating() { Average = 5 }
-            : new BookUnpublishedError() { ReleaseDate = book.ReleaseDate };
+            ? new Rating(5)
+            : new BookUnpublishedError(book.ReleaseDate);
     }
 
     // As an Error
     public Rating? GetRatingWithError([Parent] Book book)
     {
-        return book.ReleaseDate < DateTimeOffset.UtcNow
-            ? new Rating() { Average = 5 }
-            : throw new Exception();
+        if (book.Title == "Rise of the Sugar Rush")
+            return null;
+
+        return book.ReleaseDate < DateTimeOffset.UtcNow ? new Rating(5) : throw new Exception();
     }
 }
