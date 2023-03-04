@@ -8,13 +8,13 @@ public class Query
             new()
             {
                 Title = "A Tale of Two Loops",
-                Author = new Author { Name = "Jon Skeet" },
+                Author = new Author("Jon Skeet"),
                 ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
             },
             new()
             {
                 Title = "The Great Recursive Adventure",
-                Author = new Author { Name = "Jon Skeet" },
+                Author = new Author("Jon Skeet"),
                 ReleaseDate = DateTimeOffset.UtcNow.AddYears(1),
             }
         };
