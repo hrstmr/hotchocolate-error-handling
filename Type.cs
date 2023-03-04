@@ -25,16 +25,6 @@ public class BookExtensions
 
   // Define a resolver method for a field that returns a BookRating Union
 
-  [Error<OutOfStockException>]
-  public BookRating GetRatingAsPayload([Parent] Book book)
-  {
-    //if (book.Title == "Rise of the Sugar Rush")
-    //  return new PendingValidationError();
-
-    return book.ReleaseDate < DateTimeOffset.UtcNow
-      ? new Rating(5)
-      : new BookUnpublishedError(book.ReleaseDate.AddMonths(-3));
-  }
 
   // As an Error
   public Rating? GetRatingWithError([Parent] Book book)
@@ -46,4 +36,15 @@ public class BookExtensions
       ? new Rating(5)
       : throw new Exception("Book is not published yet");
   }
+
+  //[Error<OutOfStockException>]
+  //public QueryPayload<Rating, BookUnpublishedError> GetRatingAsPayload([Parent] Book book)
+  //{
+  //  //if (book.Title == "Rise of the Sugar Rush")
+  //  //  return new PendingValidationError();
+
+  //  return book.ReleaseDate < DateTimeOffset.UtcNow
+  //    ? new Rating(5)
+  //    : new BookUnpublishedError(book.ReleaseDate.AddMonths(-3));
+  //}
 }

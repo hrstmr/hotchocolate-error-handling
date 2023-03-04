@@ -15,5 +15,10 @@ public record PendingValidationError(
   string? Details = null
 ) : BookRating { }
 
-[UnionType]
-public interface QueryPayload<Result> { }
+
+//public interface QueryPayload<R,E> {
+
+//    [GraphQLName(nameof(R))]
+//    R QueryPayloadResult { get; set; }
+//    E Errors { get; set; }
+//}
