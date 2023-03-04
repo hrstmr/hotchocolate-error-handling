@@ -7,10 +7,7 @@ public class Book
     public required DateTimeOffset ReleaseDate { get; set; }
 }
 
-public class Author
-{
-    public required string Name { get; set; }
-}
+public record Author(string Name);
 
 // Define a Hot Chocolate GraphQL extension for the Book class
 [ExtendObjectType(typeof(Book))]
