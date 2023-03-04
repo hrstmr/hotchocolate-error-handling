@@ -9,7 +9,8 @@ builder.Services
     .AddMutationConventions(applyToAllMutations: false)
     .AddTypeExtension<BookExtensions>()
     .AddType<Rating>()
-    .AddType<BookUnpublishedError>();
+    .AddType<BookUnpublishedError>()
+    .AddType<PendingValidationError>();
 
 var app = builder.Build();
 
