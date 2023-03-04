@@ -1,11 +1,6 @@
 ﻿namespace hotchocolate_error_handling;
 
-public class Book
-{
-    public required string Title { get; set; }
-    public required Author Author { get; set; }
-    public required DateTimeOffset ReleaseDate { get; set; }
-}
+public record Book(string Title, Author Author, DateTimeOffset ReleaseDate);
 
 public record Author(string Name);
 
