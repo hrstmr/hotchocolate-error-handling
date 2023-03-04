@@ -5,17 +5,15 @@ public class Query
     public List<Book> GetBook() =>
         new()
         {
-            new()
-            {
-                Title = "A Tale of Two Loops",
-                Author = new Author("Jon Skeet"),
-                ReleaseDate = DateTimeOffset.UtcNow.AddYears(-1),
-            },
-            new()
-            {
-                Title = "The Great Recursive Adventure",
-                Author = new Author("Jon Skeet"),
-                ReleaseDate = DateTimeOffset.UtcNow.AddYears(1),
-            }
+            new(
+                "A Tale of Two Loops",
+                new Author("Jon Skeet Homer"),
+                DateTimeOffset.UtcNow.AddYears(-1)
+            ),
+            new(
+                "The Great Recursive Adventure",
+                new Author("Jon Skeet Homer"),
+                DateTimeOffset.UtcNow.AddYears(-1)
+            ),
         };
 }
