@@ -21,6 +21,7 @@ public class Mutation
 
     [Error<InSufficientFundException>]
     [Error<OutOfStockException>]
+    //[Error<PropertyException<Book>>] //Error 500 ServerParseError
     public async Task<Book> BuyBookOrMultiError(string title)
     {
         var exceptions = new List<Exception>();
@@ -61,4 +62,11 @@ public class OutOfStockException : Exception
     public DateTimeOffset? BackInStockDate { get; set; }
 
     public OutOfStockException() : base($"Out Of Stock") { }
+}
+
+public class PropertyException<T> : Exception
+{
+    public T? Property { get; set; }
+
+    public PropertyException() : base($"Out Of Stock") { }
 }
