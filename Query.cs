@@ -6,14 +6,19 @@ public class Query
         new()
         {
             new(
-                "A Tale of Two Loops",
+                "If You Give a Developer a Cookie",
                 new Author("Jon Skeet Homer"),
                 DateTimeOffset.UtcNow.AddYears(-1)
             ),
             new(
-                "The Great Recursive Adventure",
+                "The Cookie Monster Strikes Back",
                 new Author("Jon Skeet Homer"),
                 DateTimeOffset.UtcNow.AddYears(1)
+            ),
+            new(
+                "Rise of the Sugar Rush",
+                new Author("Jon Skeet Homer"),
+                DateTimeOffset.UtcNow.AddYears(-1)
             ),
         };
 }
