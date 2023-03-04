@@ -12,10 +12,11 @@ public class Author
     public required string Name { get; set; }
 }
 
+// Define a Hot Chocolate GraphQL extension for the Book class
 [ExtendObjectType(typeof(Book))]
 public class BookExtensions
 {
-    // With Union
+    // Define a resolver method for a field that returns a BookRating Union
     public BookRating GetRatingAsUnion([Parent] Book book)
     {
         return book.ReleaseDate < DateTimeOffset.Now
