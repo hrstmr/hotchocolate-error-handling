@@ -8,11 +8,13 @@ handling techniques in GraphQL using Hot Chocolate
 
 To get started with this repository, simply clone or download the
 source code and run the samples using Visual Studio or any other IDE
-that supports .NET Core.
+that supports .NET Core or using dotnet CLI.
 
 ## Code Samples
 
-The repository contains the following code samples:
+You can read in detail about the different approaches in [Error Handling in GraphQL With Hot Chocolate](https://htomar.dev/posts/error-handling-in-graphql-with-hot-chocolate)
+
+The repository contains the following code samples: 
 
 - The top level error list approach in GraphQL involves returning an
   array of error objects as part of the top-level response. This
